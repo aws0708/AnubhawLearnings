@@ -1,0 +1,29 @@
+<div class="row bg-secondary">
+    <p>first step is to add provideHttpClient() in the providers array of app.config.ts</p>
+    <p>ng s --port 4209  ==> for running on a specific port</p>
+</div>
+<div class="row mt-2">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getAllUser()">Get Users</button>
+        <br>
+        <button class="btn btn-success mt-2" (click)="getAllCustomer()">Get All Customer</button>
+        <br>
+        <button class="btn btn-success mt-2" (click)="getDepartment()">Get Heads' names</button>
+
+
+    </div>
+    <div class="col-3">
+        <select class="form-select">
+            @for (item of userList; track $index) {
+                <option value="">{{item.name}}</option>
+            }
+        </select>
+    </div>
+    <div class="col-3">
+        <select class="form-select">
+            @for (item of department; track $index) {
+                <option value="">{{item.name}}</option>
+            }
+        </select>
+    </div>
+</div>
