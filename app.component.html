@@ -1,0 +1,107 @@
+<div class="row bg-warning" style="height: 100px; display: flex; align-items: center;">
+  <h3 class="text-center">Learnig Angular from Best Youtube course :- Learnig Partner</h3>
+  <button class="btn btn-success" (click)="changeChannel()">Change Channel</button>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="isChannel1">
+  <div class="">
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="add-emp">AddEmployee</a>
+          </li> -->
+        <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="emp-list">EmployeeList</a>
+          </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="data-binding">Data Binding</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="struct-directive">Structural Directive</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="attrDirective">Attribute Directive</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/ifelseControl']">IfElse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/forControl']">forControl</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/switchControl']">switchControl</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/pipesInAngular']">Pipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/templateform']">TempForm</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/reactive']">ReactForm</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['lifecycle']">LifeCycle</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">API-HttpClient</a>
+          <ul class="dropdown-menu">
+            <li><a href="" class="dropdown-item" routerLink="getApi">Get-Api</a></li>
+            <li><a href="" class="dropdown-item" routerLink="postApi">Post-Api</a></li>
+          </ul>
+        </li> -->
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/getApi']">Get-Api</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/postApi']">Post-Api</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/parentComp']">Parent-Comp</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/temp-cont']">Temp-Content</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/parent-reuse']">ReUsableComp</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="!isChannel1">
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/template-forms']">TemplateForms</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<div class="container" *ngIf="isChannel1Running">
+  <router-outlet></router-outlet>
+</div>
+
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 bg-secondary">
+      <app-sibling1></app-sibling1>
+    </div>
+
+    <div class="col-sm-6 bg-success">
+      <app-sibling2></app-sibling2>
+    </div>
+  </div>
+  <div class="row bg-danger">
+    <app-sibling3></app-sibling3>
+  </div>
+</div>
