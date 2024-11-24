@@ -1,0 +1,100 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>Attribute Directive</h1>
+    <p>[ngClass] - for dynamically adding the class && [ngStyle] - for dynamically adding the style</p>
+    <button class="btn btn-primary" (click)="navigateToStructural()">Go to Structural Directive</button>
+</div>
+
+<div class="row pt-3">
+    <div class="col-3">
+        <div class="p-3 text-center" [ngClass]="div1BgColor">
+            <h1>Div-1</h1>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="p-3 text-center" [ngClass]="isDiv2Active?'bg-success':'bg-warning'">
+            <h1>Div-2</h1>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="p-3 text-center" [ngClass]="num1==num2?'bg-secondary':'bg-danger'">
+            <h1>Div-3</h1>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="p-3 text-center" [ngClass]="isActive || selectedCountry=='USA'?'bg-primary':''">
+            <h1>Div-4</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-3 text-center">
+        <button class="btn btn-danger" (click)="addRed()">Add Red</button>
+        <button class="btn btn-primary mx-2" (click)="addBlue()">Add Blue</button>
+    </div>
+    <div class="col-3 text-center">
+        <button class="btn btn-success" (click)="toggleDiv2Class()">Toggle</button>
+    </div>
+    <div class="col-3">
+        <div style="display:flex; align-items:center">
+            <!-- using [(ngModel)]="num1" -when we try to change value of num1 inside template.. the change value gets assigned in .ts -->
+            <input type="text" placeholder="Num-1" class="w-50" [(ngModel)]="num1">
+            <input type="text" placeholder="Num-2" class="w-50" [(ngModel)]="num2">
+        </div>
+    </div>
+    <div class="col-3">
+        <div style="display: flex; align-items:center">
+            <!-- <input type="checkbox" class="width-50 mx-3" (click)="isCheckBoxActive()">   OR -->
+            <input type="checkbox" class="width-50 mx-3" [(ngModel)]="isActive">
+            <select [(ngModel)]="selectedCountry">
+                <option value="">Select State</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row pt-5 m-2">
+    <div class="col-12">
+        <table class="table table-bordered table-hover table-striped text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Total Marks</th>
+                </tr>
+                <tr *ngFor="let stud of studentList; let srNo=index;">
+                    <td>{{srNo+1}}</td>
+                    <td>{{stud.studId}</td>
+                    <td>{{stud.name}}</td>
+                    <td>{{stud.gender}}</td>
+                    <td>{{stud.city}}</td>
+                    <td [ngStyle]="{'background-color':stud.isActive ?'yellow':'red'}">
+                        {{stud.isActive?'Active':'Deactive'}}</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" [ngStyle]="{'width':stud.totalMarks+'%'}">
+                                {{stud.totalMarks}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div class="row pt-3 m-5">
+    <div class="col-12" [ngStyle]="customerStyle">
+        <h3>Anubhaw Singh</h3>
+    </div>
+</div>

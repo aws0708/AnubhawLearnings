@@ -1,0 +1,118 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>Structural Directive</h1>
+    <p>*ngIf - for changig the DOM statically, *ngFor - for changing the DOM dynamically(an array is needed here)...</p>
+    <button class="btn btn-primary" [routerLink]="['/attrDirective']">Go to Attribute Directive</button>
+</div>
+
+<div class="row pt-3">
+    <div class="col-3">
+        <div *ngIf="isDiv1Visible" class="bg-danger p-3 text-center">
+            <h1>Div-1</h1>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div *ngIf="isDiv2Visible" class="bg-success p-3 text-center">
+            <h1>Div-2</h1>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div *ngIf="num1==num2" class="bg-secondary p-3 text-center">
+            <h1>Div-3</h1>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div *ngIf="isCheckBoxActive && countrySelected=='USA'" class="bg-primary p-3 text-center">
+            <h1>Div-4</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-3 text-center">
+        <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
+        <button class="btn btn-primary mx-2" (click)="showDiv1()">Show</button>
+    </div>
+    <div class="col-3 text-center">
+        <button class="btn btn-success" (click)="toggleDiv2()">Toggle</button>
+    </div>
+    <div class="col-3">
+        <div style="display:flex; align-items:center">
+            <!-- using [(ngModel)]="num1" -when we try to change value of num1 inside template.. the change value gets assigned in .ts -->
+            <input type="text" placeholder="Num-1" class="w-50" [(ngModel)]="num1">
+            <input type="text" placeholder="Num-2" class="w-50" [(ngModel)]="num2">
+        </div>
+    </div>
+    <div class="col-3">
+        <div style="display: flex; align-items:center">
+            <input type="checkbox" class="width-50 mx-3" [(ngModel)]="isCheckBoxActive">
+            <select [(ngModel)]="countrySelected">
+                <option value="">Select State</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row pt-3">
+    <div class="col-3 bg-success">
+        <h3>in ul and li</h3>
+        <ul>
+            <li *ngFor="let city of cityArray" class="p-2">
+                {{city}}
+            </li>
+        </ul>
+    </div>
+    <div class="col-3 bg-danger">
+        <h3>in div</h3>
+        <div *ngFor="let cityName of cityArray">
+            {{cityName}}
+        </div>
+    </div>
+    <div class="col-3 bg-secondary">
+        <h3>In dropdown (most used)</h3>
+        <select name="" id="">
+            <option *ngFor="let city of cityArray">{{city}}</option>
+        </select>
+    </div>
+    <div class="col-3 bg-primary">
+        <h3>dropdown value is bind and show name</h3>
+        <select name="" id="">
+            <option *ngFor="let stud of studentList" value="{{stud.studId}}">{{stud.name}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="row pt-5 m-2">
+    <div class="col-12 bg-primary">
+        <h3>*ngfor is mostly used in showing the table, this is the main concept to learn </h3>
+        <table class="table table-borderless table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sr. No.</th>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of studentList; let srNumber=index">
+                    <td>{{srNumber+1}}</td>
+                    <td>{{student.studId}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.city}}</td>
+                    <!-- <td>{{student.isActive}}</td> -->
+                     <td>
+                        <span *ngIf="student.isActive">active</span>
+                        <span *ngIf="!student.isActive">inActive</span>
+                     </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
