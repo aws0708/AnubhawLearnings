@@ -1,0 +1,75 @@
+<div class="row mt-2 p-2 bg-secondary text-white">
+    <h2>Pipes in Angular</h2>
+    <h1>Default Pipes and Custom Pipe</h1>
+    <p>Pipes are used to transform data from one form to another in the .html file.</p>
+    <p>pipes are concerned with the .html file</p>
+</div>
+
+<div class="row mt-2 p-3 bg-warning">
+    <div class="col-3">
+        Original Value - {{firstName}}
+        <br>
+        After Pipe - {{firstName | uppercase}}
+    </div>
+    <div class="col-3">
+        Original Value - {{myName}}
+        <br>
+        After Pipe - {{myName | lowercase}}
+    </div>
+    <div class="col-3">
+        Original Value - {{titleName}}
+        <br>
+        After Pipe - {{titleName | titlecase}}
+    </div>
+    <div class="col-3">
+        Original Value -
+        <br>
+        After Pipe -
+    </div>
+</div>
+<div class="row p-3 mt-4 bg-danger">
+    <div class="col-3">
+        Original Value - {{currentDate}}
+        <br>
+        After Pipe - {{currentDate | date}}
+    </div>
+    <div class="col-3">
+        Original Value - {{currentDate}}
+        <br>
+        After Pipe - {{currentDate | date:'dd-MM-yy'}}
+    </div>
+    <div class="col-3">
+        Original Value -{{currentDate}}
+        <br>
+        After Pipe - {{currentDate | date:'dd-MM-yyyy'}}
+    </div>
+    <div class="col-3">
+        Original Value - {{currentDate}}
+        <br>
+        After Pipe - {{currentDate | date:'dd/MMM/yy'}}
+    </div>
+    
+</div>
+
+<div class="row p-3 mt-4 bg-success">
+    <div class="col-3">
+        <p>we can't print object directly in .html, so we use json pipe -- this is just for developers to check what data is coming from API</p>
+        Original Value - {{student}}
+        <br>
+        After Pipe - {{student | json}}
+    </div>
+
+    <div class="col-3">
+        <p>async pipe is used to directly subsribe the observable in .html</p>
+        Original Value - {{currentTime}}
+        <br>
+        After Pipe - {{currentTime | async | date:'HH-mm-ss'}}
+    </div>
+
+    <div class="col-3">
+        <p>Custom Pipe here we created a pipe using command -- ng g p pipeName--- In na.pipe.ts  , we have transform function , where we put our logic</p>
+        Original Value - {{student.state}}
+        <br>
+        After Pipe - {{student.state | na}}
+    </div>
+</div>
