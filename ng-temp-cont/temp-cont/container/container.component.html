@@ -1,0 +1,30 @@
+<!-- 1st use case of ng-container -->
+<ng-container *ngIf="toggle; else toggleOff">
+    <p>Toggle is on</p>
+</ng-container>
+<ng-template #toggleOff>
+    <p>Toggle is off</p>
+</ng-template>
+
+<button (click)="onToggle()">Toggle</button>
+<br><br>
+
+<!-- 2nd use case of ng-container -->
+<ng-template #myTemplate>
+    <p>This is a ng-template</p>
+</ng-template>
+<ng-container *ngTemplateOutlet="myTemplate"></ng-container>
+
+<h3>ng-container's main use is when we want to use multiple directive on a single element</h3>
+<p>We can't use multiple directive on a single element , but using ng-contianer, we can apply multiple directive</p>
+
+<!-- 3rd use case --- for multiple directives on same element -->
+<div *ngFor="let name of names" (click)="changeToUpper()">
+    <p *ngIf="name.charAt(0)=='V'">{{name}}</p>
+</div>
+
+<!-- no need of extra div -->
+<ng-content *ngFor="let name of namesUpper">
+    <p *ngIf="name.charAt(0)=='V'">{{name}}</p>
+</ng-content>
+

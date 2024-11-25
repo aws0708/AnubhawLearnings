@@ -1,0 +1,24 @@
+<p>ng-template is a directive. ng-template increases the code 
+    reusablity. Based on the refence varible, we can render it multiple
+    times. And hence we do not need another div for else part for each part of the code.
+</p>
+<div>
+    <button class="btn btn-danger mb-3" (click)="logMethod()">{{buttonText}}</button>
+</div>
+<div class="bg-danger mt-2 mb-2" *ngIf="isLoggedIn;else notlogged">
+    {{userName}}
+</div>
+<ng-template #notlogged>
+    <div class="bg-info mb-3">User Not Logged In</div>
+    <!-- <div *ngTemplateOutlet="mytemplate"></div> -->
+</ng-template>
+
+<div class="row">
+    <ng-template #mytemplate>
+        <h3>This is a template </h3>
+        <p>This is an example paragraph to understand ng-template</p>
+    </ng-template>
+
+    <div *ngTemplateOutlet="mytemplate"></div>
+
+</div>
