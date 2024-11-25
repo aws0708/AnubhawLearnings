@@ -1,0 +1,35 @@
+<div class="demo">
+    <p #temp>Message: {{ message }}</p>
+</div>
+<p *ngIf="message">ngChanges is executed at the start when the component is created & whenever there is a change in input property</p>
+<p>Angular raises ngOnInit, after it creates the component and update the input properties. ngOnInit is called after ngonChanges just once.
+    By this time, child components are not created, projected contents will not be available, also View of the component is not rendered yet
+</p>
+<p>
+    ngdoCheck is invoked even if there is no change in input property (previous==current).
+    Also if we click a button and there is no change detection, even then , ngDoCheck is invoked.
+    ngDocheck is called after ngOnChanges and ngOnInit
+</p>
+<br><br>
+<p>ngAfterContentInit is called after the component's projected
+    content has been fully initialized and is projected. This event is called
+    even if there is no content projection.
+    <br>ngAfterContentInit is called after ngDoCheck.
+    <br>ngAfterContentInit is called only during the first change detection cycle
+</p>
+<br><br>
+<p>ngAfterContentChecked is called after ngAfterContentInit, when the content projectioon is initialised and projected. <br>
+    Also ngAfterContentChecked is called for every change detection cycle.
+</p>
+
+<br><br>
+<p>ngAfterviewInit is called after ngAfterContentChecked. And is called after the component's view template and its child components' view template is initialised.
+   <br> Like ngAfterContentInit, it is also called only for the first change detection cycle.
+</p>
+<br><br>
+<p>
+    ngAfterViewChecked is called after ngAfterViewInit and is called for every change detection cycle which are not detected by angular.
+</p>
+<p>{{destroyString}}</p>
+<input placeholder="Hello focus me" (focus)="0">
+<ng-content></ng-content>

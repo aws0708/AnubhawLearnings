@@ -1,0 +1,77 @@
+<div class="row mt-2 p-2 bg-secondary text-white">
+    <h1>Reactive Form</h1>
+    <h2>Using formControl</h2>
+</div>
+<div class="row m2">
+    <form class="row g-3 needs-validation" [formGroup]="studentForm">
+        <div class="col-md-4">
+            <label class="form-label">First name</label>
+            <input type="text" class="form-control" formControlName="firstName">
+            <div class="text-danger">
+                @if(studentForm.controls['firstName'].errors?.['required']){
+                <span>This is required</span>
+                }
+                @else if(studentForm.controls['firstName'].errors?.['minlength']){
+                <span>Min 4 character is required</span>
+                }
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Last name</label>
+            <input type="text" class="form-control" formControlName="lastName">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Username</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">&#64;</span>
+                <input type="text" class="form-control" formControlName="userName">
+            </div>
+            <div class="text-danger">
+                @if(studentForm.controls['userName'].errors?.['required']){
+                    <span>This is required</span>
+                }@else if (studentForm.controls['userName'].errors?.['email']) {
+                    <span>Email format required</span>
+                }
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control" formControlName="city">
+
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">State</label>
+            <select class="form-select" formControlName="state">
+                <option selected disabled value="">Choose...</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Goa">Goa</option>
+                <option value="Punjab">Punjab</option>
+            </select>
+
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Zip</label>
+            <input type="text" class="form-control" formControlName="zipCode">
+            <div class="invalid-feedback">
+                Please provide a valid zip.
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" formControlName="isAcceptedTerms">
+                <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-secondary me-3" type="submit">Reset</button>
+            <button class="btn btn-primary" type="submit" (click)="onSave()">Submit</button>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-4">
+        {{formValue}}
+    </div>
+</div>
