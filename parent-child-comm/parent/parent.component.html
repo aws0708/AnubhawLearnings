@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row bg-secondary">
+        <h3>Parent to Child & Child to Parent Communication</h3>
+        <div class="col-sm-6 bg-primary">
+            <div>
+                 <h4>from Parent</h4>
+                 <div class="bg-success">
+                    <p class="text-white">{{recievedMessageFromChild}}</p>
+                  </div>
+                 <button class="btn btn-secondary mb-3" (click)="setMessage()">Message from Parent</button>
+            </div>
+        </div>
+    
+        <div class="col-sm-6 bg-danger">
+            <div>
+                <h4>from Child</h4>
+                <app-child [message]="messageFromparent" (messageFromChildEvent)="getMessageFromChild($event)"></app-child>
+            </div>
+        </div>
+    </div>
+    
+</div>
